@@ -1,0 +1,12 @@
+{
+  "name": "r-posit-devops-plugin",
+  "version": "0.1.0",
+  "description": "R & Posit DevOps plugin: testthat and brand-styling subagents, air-format/roxygen2 sync hooks, R coding and documentation rules, and reference skills for R packages, Shiny/bslib, Quarto, and brand.yml.",
+  "author": {
+    "name": "Matthew Eklund",
+    "email": "mtthw.eklnd@gmail.com"
+  },
+  "homepage": "https://github.com/mtthweklnd/r-devops-plugin",
+  "repository": "https://github.com/mtthweklnd/r-devops-plugin",
+  "keywords": ["r", "posit", "shiny", "quarto", "testthat", "roxygen2", "bslib", "devops"]
+}
