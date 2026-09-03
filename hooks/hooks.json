@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "description": "Auto-format R and Quarto files using Posit air CLI",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PLUGIN_DIR\"/hooks/format_r.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "description": "Inspect and synchronize roxygen2 documentation using devtools::document()",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PLUGIN_DIR\"/hooks/check_roxygen.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
