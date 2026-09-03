@@ -1,3 +1,11 @@
+---
+paths:
+  - "**/*.R"
+  - "**/*.r"
+  - "DESCRIPTION"
+  - "NAMESPACE"
+---
+
 # R & Posit Code Quality and Formatting Guidelines
 
 This rule sheet defines coding standards and guidelines for R and Posit projects in this workspace.

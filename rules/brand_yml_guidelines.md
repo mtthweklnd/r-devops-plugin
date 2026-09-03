@@ -1,3 +1,9 @@
+---
+paths:
+  - "**/_brand.yml"
+  - "**/brand.yml"
+---
+
 # Brand YAML (_brand.yml) Formatting and Styling Rules
 
 These rules govern the creation, modification, and integration of company branding guidelines via `_brand.yml` files.
