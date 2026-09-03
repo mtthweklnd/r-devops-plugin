@@ -50,7 +50,7 @@ air format .
 
 ## Package Documentation & pkgdown
 
-- Follow base documentation rules in [r_posit_guidelines.md](../../rules/r_posit_guidelines.md).
+- Follow base formatting/style rules in [r_posit_guidelines.md](../../rules/r_posit_guidelines.md) and commenting/roxygen2 rules in [r_documentation.md](../../rules/r_documentation.md).
 - Whenever you add a new exported function topic, register the topic in `_pkgdown.yml`.
 - Verify documentation references using `pkgdown::check_pkgdown()`.
 

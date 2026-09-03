@@ -32,7 +32,11 @@ if ($ext -in @('.r')) {
                 Push-Location $dir
                 try {
                     & Rscript -e "if (requireNamespace('devtools', quietly=TRUE)) devtools::document(quiet=TRUE)" 2>&1 | Out-Null
-                    Write-Host "Documentation synchronized for package at $dir"
+                    if ($LASTEXITCODE -eq 0) {
+                        Write-Host "Documentation synchronized for package at $dir"
+                    } else {
+                        Write-Warning "devtools::document() failed for package at $dir. Run it manually to see the error."
+                    }
                 } finally {
                     Pop-Location
                 }

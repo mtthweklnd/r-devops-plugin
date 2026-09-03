@@ -25,8 +25,11 @@ if [[ "$FILE_PATH" =~ \.(R|r)$ ]]; then
     if [ -f "$PKG_ROOT/DESCRIPTION" ]; then
       if command -v Rscript &> /dev/null; then
         echo "Detected roxygen2 comment changes in $FILE_PATH. Synchronizing documentation with devtools::document()..."
-        (cd "$PKG_ROOT" && Rscript -e "if (requireNamespace('devtools', quietly=TRUE)) devtools::document(quiet=TRUE)" > /dev/null 2>&1) || true
-        echo "Documentation synchronized for package at $PKG_ROOT."
+        if (cd "$PKG_ROOT" && Rscript -e "if (requireNamespace('devtools', quietly=TRUE)) devtools::document(quiet=TRUE)" > /dev/null 2>&1); then
+          echo "Documentation synchronized for package at $PKG_ROOT."
+        else
+          echo "WARNING: devtools::document() failed for package at $PKG_ROOT. Run it manually to see the error." >&2
+        fi
       fi
     fi
   fi
