@@ -15,4 +15,4 @@ This directory contains automated lifecycle hooks that enforce code style and ke
 * **Benefits**: Guarantees that `NAMESPACE` exports and `man/*.Rd` help files stay synchronized whenever function signatures, parameters, or export tags are modified.
 
 ## Platform Support
-Both bash (`.sh`) and PowerShell (`.ps1`) variants are provided for Unix/macOS/Linux and Windows environments.
+Hooks in `hooks.json` are configured to execute the Bash (`.sh`) scripts. Standalone PowerShell (`.ps1`) variants are also provided in this directory for manual execution or custom PowerShell setups on Windows.

@@ -16,7 +16,7 @@ Two `PostToolUse` hooks fire automatically on every `Edit`/`Write`, so style and
 - **`format_r`** — Runs Posit's [`air`](https://posit-dev.github.io/air/cli.html) formatter on any touched `.R`, `.r`, or `.qmd` file.
 - **`check_roxygen`** — Detects roxygen blocks (`#' @`), locates the package root via `DESCRIPTION`, and runs `devtools::document()` to keep `NAMESPACE` and `man/*.Rd` in sync with the code.
 
-Both ship as Bash and PowerShell variants, so they work the same on macOS/Linux and Windows. See [hooks/README.md](hooks/README.md).
+Hooks are wired via Bash scripts (`.sh`). Standalone PowerShell (`.ps1`) variants are also included in [`hooks/`](hooks/README.md) for manual execution or custom Windows setups.
 
 ### Coding standard rules
 Path-scoped rules Claude applies automatically when it touches matching files:
