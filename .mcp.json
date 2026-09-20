@@ -1,0 +1,10 @@
+{
+  "azure-devops": {
+    "command": "npx",
+    "args": ["-y", "@azure-devops/mcp", "${AZURE_DEVOPS_ORG}", "-a", "pat"],
+    "env": {
+      "PERSONAL_ACCESS_TOKEN": "${AZURE_DEVOPS_PAT}",
+      "NODE_OPTIONS": "--dns-result-order=ipv4first"
+    }
+  }
+}

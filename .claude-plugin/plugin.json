@@ -8,5 +8,5 @@
   },
   "homepage": "https://github.com/mtthweklnd/r-devops-plugin",
   "repository": "https://github.com/mtthweklnd/r-devops-plugin",
-  "keywords": ["r", "posit", "shiny", "quarto", "testthat", "roxygen2", "bslib", "devops"]
+  "keywords": ["r", "posit", "shiny", "quarto", "testthat", "roxygen2", "bslib", "devops", "azure-devops", "mcp"]
 }

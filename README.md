@@ -34,6 +34,21 @@ Bundled skills give Claude detailed, on-demand knowledge of the Posit toolchain:
 | [`shiny-bslib`](skills/shiny-bslib/SKILL.md) | Modern Shiny UI with bslib (layouts, cards, value boxes, theming, inputs) |
 | [`brand-yml`](skills/brand-yml/SKILL.md) | `_brand.yml` authoring for Shiny (R/Python) and Quarto |
 | [`quarto-authoring`](skills/quarto-authoring/SKILL.md) | Quarto docs, sites, and books; migration from R Markdown/bookdown/blogdown/xaringan/distill/Jupyter |
+| [`azure-devops-mcp`](skills/azure-devops-mcp/SKILL.md) | Azure DevOps MCP setup, PAT base64 encoding, work item CRUD, repos, and pipelines |
+
+### MCP integration
+Bundled via [`.mcp.json`](.mcp.json) (see [`skills/azure-devops-mcp`](skills/azure-devops-mcp/SKILL.md) for complete operation schemas, field references, and troubleshooting):
+
+- **`azure-devops`** — Wraps the official [`@azure-devops/mcp`](https://www.npmjs.com/package/@azure-devops/mcp) server (stdio) so Claude can read/write work items, browse repos, and inspect pipelines directly in Azure DevOps. Tools surface as `mcp__plugin_r-posit-devops-plugin_azure-devops__*`; run `/mcp` to confirm the server connected.
+
+  Required environment variables:
+
+  | Variable | Description |
+  |---|---|
+  | `AZURE_DEVOPS_ORG` | Short org name, e.g. `my-org` for `https://dev.azure.com/my-org` |
+  | `AZURE_DEVOPS_PAT` | A Personal Access Token, **base64-encoded** as `:{raw_token}` before being set. In PowerShell: `[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes(":$rawPat"))`. In bash: `printf ':%s' "$RAW_PAT" \| base64` |
+
+  Recommended PAT scopes: Work Items (Read & Write), Code (Read & Write) if using repo tools, Build (Read & Execute) if triggering pipelines.
 
 ## Installation
 
@@ -52,6 +67,7 @@ Or, if you manage plugins locally, clone the repo into your Claude Code plugins 
 - **Writing `testthat` suites** — ask Claude to add coverage for a function or fix a failing test; `r-test-engineer` designs isolated, self-contained tests with proper fixtures and mocking.
 - **Building a Shiny dashboard** — the `shiny-bslib` skill guides modern `bslib` layouts, and `brand-styling-expert` applies a consistent `_brand.yml` theme.
 - **Authoring or migrating Quarto documents** — the `quarto-authoring` skill covers callouts, cross-references, citations, and step-by-step migration from R Markdown, bookdown, blogdown, xaringan, or distill.
+- **Tracking work items and pipelines in Azure DevOps** — query assigned tasks, create user stories with markdown acceptance criteria, and inspect PRs and build runs via the `azure-devops-mcp` skill and `@azure-devops/mcp` tools.
 - **Keeping a codebase clean without manual effort** — every edit to `.R`/`.qmd` files is auto-formatted with `air` and re-documented with `devtools::document()`, so style and doc drift never accumulate.
 - **Managing dependencies** — Claude follows `renv`-based workflows (`renv::restore()`, `renv::install()`, `renv::snapshot()`) automatically per [`rules/r_posit_guidelines.md`](rules/r_posit_guidelines.md).
 
@@ -59,10 +75,11 @@ Or, if you manage plugins locally, clone the repo into your Claude Code plugins 
 
 ```
 .claude-plugin/  Plugin manifest (plugin.json) and marketplace catalog (marketplace.json)
+.mcp.json        Bundled MCP servers (azure-devops)
 agents/          Subagent definitions (r-test-engineer, brand-styling-expert)
 hooks/           PostToolUse automation (format_r, check_roxygen) + hooks.json
 rules/           Path-scoped coding and documentation standards
 skills/          Reference knowledge for r-package-development, testing, shiny-bslib,
-                 brand-yml, and quarto-authoring
+                 brand-yml, quarto-authoring, and azure-devops-mcp
 AGENTS.md        System instructions tying the above together for subagents
 ```

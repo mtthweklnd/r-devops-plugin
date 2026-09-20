@@ -17,3 +17,7 @@ New or modified R files must conform to [rules/r_posit_guidelines.md](rules/r_po
 ## 4. Brand Styling
 
 For branding, styling, themes, or UI layout on Shiny apps or Quarto docs, invoke [`brand-styling-expert`](agents/brand-styling-expert.md) — its own definition carries the full workflow and the `brand-yml`/`shiny-bslib` skills.
+
+## 5. Azure DevOps & Work Item Tracking
+
+When querying or updating work items, inspecting pull requests, or checking build pipelines in Azure DevOps, use the `@azure-devops/mcp` tools. Refer to [`skills/azure-devops-mcp`](skills/azure-devops-mcp/SKILL.md) for authentication prerequisites (`AZURE_DEVOPS_ORG`, base64-encoded `AZURE_DEVOPS_PAT`), work item mutation schemas, and troubleshooting guidelines.
