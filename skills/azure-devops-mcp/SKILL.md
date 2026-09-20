@@ -151,7 +151,7 @@ curl -s -u ":$RAW_PAT" "https://dev.azure.com/{org}/{project}/_apis/wit/workitem
 | Error / Symptom | Root Cause | Exact Resolution |
 | :--- | :--- | :--- |
 | `read ECONNRESET` | Node IPv6 resolution timeout | Set `NODE_OPTIONS="--dns-result-order=ipv4first"` |
-| `401 Unauthorized` / `Invalid token` | Token lacks leading colon before base64 | Regenerate: `printf ':%s' "$RAW_PAT" \| base64` |
+| `401 Unauthorized` / `Invalid token` | Token base64-encoded without email prefix | Regenerate: `printf '%s:%s' "$EMAIL" "$RAW_PAT" \| base64` |
 | `Field 'X' not found` | Using UI display name instead of Reference ID | Replace with canonical reference ID from Section 5 |
 | Hanging process / No response | Client timeout or interactive npm prompt | Use `-y` flag with `npx`, or install globally via `npm i -g @azure-devops/mcp` |
 | `Cannot read properties of undefined` | Missing required payload argument | Ensure `project`, `workItemType`, and `fields` array are present |

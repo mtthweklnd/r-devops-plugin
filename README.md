@@ -46,7 +46,7 @@ Bundled via [`.mcp.json`](.mcp.json) (see [`skills/azure-devops-mcp`](skills/azu
   | Variable | Description |
   |---|---|
   | `AZURE_DEVOPS_ORG` | Short org name, e.g. `my-org` for `https://dev.azure.com/my-org` |
-  | `AZURE_DEVOPS_PAT` | A Personal Access Token, **base64-encoded** as `:{raw_token}` before being set. In PowerShell: `[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes(":$rawPat"))`. In bash: `printf ':%s' "$RAW_PAT" \| base64` |
+  | `AZURE_DEVOPS_PAT` | A Personal Access Token, **base64-encoded** as `{email}:{raw_token}` before being set. In PowerShell: `[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes("$email`:$rawPat"))`. In bash: `printf '%s:%s' "$EMAIL" "$RAW_PAT" \| base64` |
 
   Recommended PAT scopes: Work Items (Read & Write), Code (Read & Write) if using repo tools, Build (Read & Execute) if triggering pipelines.
 
